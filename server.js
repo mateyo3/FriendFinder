@@ -11,7 +11,7 @@ var PORT = process.env.PORT || 4545
 
 
 app.get("/", function(req, res) {
-  res.send("Welcome to the Star Wars Page!");
+  res.send("Welcome to FriendFinder!");
 });
 
 
