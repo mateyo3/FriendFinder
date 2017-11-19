@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 	<script src="https://code.jquery.com/jquery.js"></script>
+	<script type="text/javascript" src="server.js"></script>
 
 </head>
 <body>
@@ -43,17 +44,12 @@
 		<h3>Life is serious all the time.</h3>
 	</div>
 
-	<!-- Basic dropdown -->
-	<div class="btn-group">
-	    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">select a number</button>
-
-	    <div class="dropdown-menu">
-	        <a class="dropdown-item">1 (strongly agree)</a>
-	        <a class="dropdown-item">2</a>
-	        <a class="dropdown-item">3</a>
-	        <a class="dropdown-item">4</a>
-	        <a class="dropdown-item">5 (strongly disagree)</a>
-	    </div>
+	<div class="question">
+		<label class="radio-inline"><input class="questionOne" type="radio" name="optradio" value="1">1 (strongly agree)</label>
+		<label class="radio-inline"><input class="questionOne" type="radio" name="optradio" value="2">2</label>
+		<label class="radio-inline"><input class="questionOne" type="radio" name="optradio" value="3">3</label>
+		<label class="radio-inline"><input class="questionOne" type="radio" name="optradio" value="4">4</label>
+		<label class="radio-inline"><input class="questionOne" type="radio" name="optradio" value="5">5 (strongly disagree)</label>
 	</div>
 
 	<!-- QUESTION 2 -->
@@ -65,17 +61,12 @@
 		<h3>You grew up with a lot of family around you.</h3>
 	</div>
 
-	<!-- Basic dropdown -->
-	<div class="btn-group">
-	    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">select a number</button>
-
-	    <div class="dropdown-menu">
-	        <a class="dropdown-item">1 (strongly agree)</a>
-	        <a class="dropdown-item">2</a>
-	        <a class="dropdown-item">3</a>
-	        <a class="dropdown-item">4</a>
-	        <a class="dropdown-item">5 (strongly disagree)</a>
-	    </div>
+	<div class="question">
+		<label class="radio-inline"><input class="questionTwo" type="radio" name="optradio" value="1">1 (strongly agree)</label>
+		<label class="radio-inline"><input class="questionTwo" type="radio" name="optradio" value="2">2</label>
+		<label class="radio-inline"><input class="questionTwo" type="radio" name="optradio" value="3">3</label>
+		<label class="radio-inline"><input class="questionTwo" type="radio" name="optradio" value="4">4</label>
+		<label class="radio-inline"><input class="questionTwo" type="radio" name="optradio" value="5">5 (strongly disagree)</label>
 	</div>
 
 	<!-- QUESTION 3 -->
@@ -87,17 +78,12 @@
 		<h3>You'd rather play a prank on your teacher than listen to them lecture.</h3>
 	</div>
 	
-	<!-- Basic dropdown -->
-	<div class="btn-group">
-	    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">select a number</button>
-
-	    <div class="dropdown-menu">
-	        <a class="dropdown-item">1 (strongly agree)</a>
-	        <a class="dropdown-item">2</a>
-	        <a class="dropdown-item">3</a>
-	        <a class="dropdown-item">4</a>
-	        <a class="dropdown-item">5 (strongly disagree)</a>
-	    </div>
+	<div class="question">
+		<label class="radio-inline"><input class="questionThree" type="radio" name="optradio" value="1">1 (strongly agree)</label>
+		<label class="radio-inline"><input class="questionThree" type="radio" name="optradio" value="2">2</label>
+		<label class="radio-inline"><input class="questionThree" type="radio" name="optradio" value="3">3</label>
+		<label class="radio-inline"><input class="questionThree" type="radio" name="optradio" value="4">4</label>
+		<label class="radio-inline"><input class="questionThree" type="radio" name="optradio" value="5">5 (strongly disagree)</label>
 	</div>
 
 	<div>
@@ -127,6 +113,8 @@
         alert("Adding new friend");
       });
     });
+
+
   </script>
 
 

@@ -89,6 +89,23 @@ app.get("/survey", function(req, res) {
   res.sendFile(path.join(__dirname, "/public/survey.html"));
 });
 
+// Get route to friend name
+app.get("/:name", function(req, res) {
+    var chosen = req.params.name;
+
+  if (chosen) {
+    console.log(chosen);
+
+    for (var i = 0; i < friends.length; i++) {
+      if (chosen === friends[i].routeName) {
+        return res.json(friends[i]);
+      }
+    }
+    return res.json(false);
+  }
+  return res.json(name);
+});
+
 // Get route to list all friends
 app.get("/api/friends", function(req, res) {
   res.json(friends);
@@ -107,6 +124,22 @@ var newfriend = req.body;
 
   });
 
+
+//JQuery submit new friend to array
+    // $(".submit").on("click", function(event) {
+    //   event.preventDefault();
+    //   var newFriend = {
+    //     name: $("#name").val().trim(),
+    //     photo: $("#photo").val().trim(),
+    //   };
+
+    //   // Question: What does this code do??
+    //   $.post("/api/friends", newFriend)
+    //   .done(function(data) {
+    //     console.log(data);
+    //     alert("Adding new friend");
+    //   });
+    // });
 
 //loop through each objects answer array and find difference of each index position
 
