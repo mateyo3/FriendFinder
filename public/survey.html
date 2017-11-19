@@ -12,8 +12,9 @@
 	<link rel="shortcut icon" href="assets/images/favicon_icon.ico" />
 
 	<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+	<script src="https://code.jquery.com/jquery.js"></script>
 
 </head>
 <body>
@@ -24,13 +25,13 @@
 	<div>
 
 	<div class="form-group">
-		<label for="usr">Name: (required)</label>
-		<input type="text" class="form-control" id="usr">
+		<label for="name">Name: (required)</label>
+		<input type="text" class="form-control" id="name">
 	</div>
 
 	<div class="form-group">
-		<label for="pwd">Photo link: (required)</label>
-		<input type="password" class="form-control" id="pwd">
+		<label for="photo">Photo link: (required)</label>
+		<input type="text" class="form-control" id="photo">
 	</div>
 
 	<!-- QUESTION 1 -->
@@ -44,7 +45,7 @@
 
 	<!-- Basic dropdown -->
 	<div class="btn-group">
-	    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Basic dropdown</button>
+	    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">select a number</button>
 
 	    <div class="dropdown-menu">
 	        <a class="dropdown-item">1 (strongly agree)</a>
@@ -66,7 +67,7 @@
 
 	<!-- Basic dropdown -->
 	<div class="btn-group">
-	    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Basic dropdown</button>
+	    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">select a number</button>
 
 	    <div class="dropdown-menu">
 	        <a class="dropdown-item">1 (strongly agree)</a>
@@ -88,7 +89,7 @@
 	
 	<!-- Basic dropdown -->
 	<div class="btn-group">
-	    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Basic dropdown</button>
+	    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">select a number</button>
 
 	    <div class="dropdown-menu">
 	        <a class="dropdown-item">1 (strongly agree)</a>
@@ -104,14 +105,33 @@
 	</div>
 
 	<div>
-	<button class="btn btn-primary submit" type="submit" data-toggle="dropdown">Submit</button>
+	<button class="btn btn-danger submit" type="submit">Submit</button>
 	</div>
 
 </div>
 <!-- class = "container-fluid" -->
 
-	<!-- jQuery CDN -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    // Question: What does this code do?
+    $(".submit").on("click", function(event) {
+      event.preventDefault();
+      var newFriend = {
+        name: $("#name").val().trim(),
+        photo: $("#photo").val().trim(),
+      };
+
+      // Question: What does this code do??
+      $.post("/api/friends", newFriend)
+      .done(function(data) {
+        console.log(data);
+        alert("Adding new friend");
+      });
+    });
+  </script>
+
+
+
+
 
 </body>
 

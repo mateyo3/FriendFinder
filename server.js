@@ -14,8 +14,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // array of ninjas. Needs to be modularized to friends.js
-var ninjas = [
+var friends = [
 	{
+		routeName: "naruto",
 		name: "Naruto",
 		photo: "https://pre00.deviantart.net/b59c/th/pre/f/2016/104/4/f/chibi_naruto_shippuden_by_marcinha20-d9yxwvl.png",
 		scores: [
@@ -25,6 +26,7 @@ var ninjas = [
 		]
 	},
 	{
+		routeName: "sasuke",
 		name: "Sasuke",
 		photo: "https://pre00.deviantart.net/956e/th/pre/f/2015/312/e/7/chibi_sasuke_uchiha_sharingan_by_marcinha20-d9g0dce.png",
 		scores: [
@@ -34,6 +36,7 @@ var ninjas = [
 		]
 	},
 		{
+		routeName: "hinata",
 		name: "Hinata",
 		photo: "https://pre00.deviantart.net/0d56/th/pre/f/2016/223/b/2/chibi___hinata_the_last_by_marcinha20-d87eraj.png",
 		scores: [
@@ -43,6 +46,7 @@ var ninjas = [
 		]
 	},
 		{
+		routeName: "sakura",
 		name: "Sakura",
 		photo: "https://pre00.deviantart.net/a0f8/th/pre/f/2016/311/9/f/chibi_sakura_movie_1_by_marcinha20-danoahm.png",
 		scores: [
@@ -53,6 +57,20 @@ var ninjas = [
 	}
 
 ]//end of ninjas array
+
+
+// Question set
+var questions = [{
+  question: "Life is serious all the time.",
+  answer: [1, 2, 3, ,4 ,5],
+}, {
+  question: "You grew up with a lot of family around you.",
+  answer: [1, 2, 3, ,4 ,5],
+}, {
+  question: "You'd rather play a prank on your teacher than listen to them lecture.",
+  answer: [1, 2, 3, ,4 ,5],
+}];
+
 
 
 // Get route to root
@@ -73,15 +91,31 @@ app.get("/survey", function(req, res) {
 
 // Get route to list all friends
 app.get("/api/friends", function(req, res) {
-  res.json(ninjas);
+  res.json(friends);
 });
 
 app.post("/api/friends", function(req, res) {
 
+var newfriend = req.body;
+  newfriend.routeName = newfriend.name.replace(/\s+/g, "").toLowerCase();
 
+  console.log(newfriend);
 
-	ninjasList.push(req.body)
+  friends.push(newfriend);
+
+  res.json(newfriend);
+
   });
+
+
+//loop through each objects answer array and find difference of each index position
+
+//total difference of each friend
+
+//choose lowest difference
+
+//display result in modal pop-up (name and picture)
+
 
 
 
