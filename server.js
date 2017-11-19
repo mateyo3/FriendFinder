@@ -2,6 +2,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
+// var friends = require("../data/friends");
 
 // Sets up the Express App
 var app = express();
@@ -15,37 +16,36 @@ app.use(bodyParser.json());
 // array of ninjas. Needs to be modularized to friends.js
 var ninjas = [
 	{
-		"name": "Naruto",
-		"photo": "https://pre00.deviantart.net/b59c/th/pre/f/2016/104/4/f/chibi_naruto_shippuden_by_marcinha20-d9yxwvl.png"
-		"scores": [
+		name: "Naruto",
+		photo: "https://pre00.deviantart.net/b59c/th/pre/f/2016/104/4/f/chibi_naruto_shippuden_by_marcinha20-d9yxwvl.png",
+		scores: [
 			"1",
 			"1",
 			"1"
 		]
 	},
 	{
-		"name": "Sasuke",
-		"photo": "https://pre00.deviantart.net/956e/th/pre/f/2015/312/e/7/chibi_sasuke_uchiha_sharingan_by_marcinha20-d9g0dce.png"
-		"scores": [
+		name: "Sasuke",
+		photo: "https://pre00.deviantart.net/956e/th/pre/f/2015/312/e/7/chibi_sasuke_uchiha_sharingan_by_marcinha20-d9g0dce.png",
+		scores: [
 			"5",
 			"1",
 			"5"
 		]
 	},
 		{
-		"name": "Hinata",
-		"photo": "https://pre00.deviantart.net/0d56/th/pre/f/2016/223/b/2/chibi___hinata_the_last_by_marcinha20-d87eraj.png"
-		"scores": [
+		name: "Hinata",
+		photo: "https://pre00.deviantart.net/0d56/th/pre/f/2016/223/b/2/chibi___hinata_the_last_by_marcinha20-d87eraj.png",
+		scores: [
 			"5",
 			"5",
 			"5"
 		]
 	},
-		},
 		{
-		"name": "Sakura",
-		"photo": "https://pre00.deviantart.net/a0f8/th/pre/f/2016/311/9/f/chibi_sakura_movie_1_by_marcinha20-danoahm.png"
-		"scores": [
+		name: "Sakura",
+		photo: "https://pre00.deviantart.net/a0f8/th/pre/f/2016/311/9/f/chibi_sakura_movie_1_by_marcinha20-danoahm.png",
+		scores: [
 			"4",
 			"3",
 			"4"
@@ -60,9 +60,15 @@ app.get("/", function(req, res) {
   res.send("Welcome to FriendFinder!");
 });
 
+
+// Get route to home
+app.get("/home", function(req, res) {
+  res.sendFile(path.join(__dirname, "/public/home.html"));
+});
+
 // Get route to survey questions
 app.get("/survey", function(req, res) {
-  res.sendFile(path.join(__dirname, "survey.html"));
+  res.sendFile(path.join(__dirname, "/public/survey.html"));
 });
 
 // Get route to list all friends
@@ -74,7 +80,7 @@ app.post("/api/friends", function(req, res) {
 
 
 
-
+	ninjasList.push(req.body)
   });
 
 
@@ -83,4 +89,5 @@ app.post("/api/friends", function(req, res) {
 // =============================================================
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);
+  console.log("localhost:" + PORT);
 });
