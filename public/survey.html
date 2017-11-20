@@ -11,10 +11,10 @@
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="assets/images/favicon_icon.ico" />
 
-	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="server.js"></script>
 
 </head>
@@ -109,33 +109,55 @@
 </div>
 <!-- class = "container-fluid" -->
 
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Say hello to your new NINJA Friend!</h4>
+        </div>
+        <div class="modal-body">
+          <h2 class="match-name"></h2>
+          <div class="math-photo"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        <!-- end Modal content-->
+      </div>
+      
+    </div>
+  </div>
+
   <script type="text/javascript">
 
     $(".submit").on("click", function(event) {
 		event.preventDefault();
 
-		let scoresArr = [];
-		
-		scoresArr.push($("#questionOne").val().trim());
-		scoresArr.push($("#questionTwo").val().trim()); 
-		scoresArr.push($("#questionThree").val().trim());
-	
-		console.log(scoresArr);
+		// these variables were created in an attempt to work around the object property name problem
+		var scoresQ1 = $("#questionOne").val();
+		var scoresQ2 = $("#questionTwo").val();
+		var scoresQ3 = $("#questionThree").val();
 
-		var newFriend = {
+		newFriend = {
         	"name": $("#name").val().trim(),
         	"photo": $("#photo").val().trim(),
-        	"scores": scoresArr
+        	"scores": [scoresQ1, scoresQ2, scoresQ3]
+
+        	// scores: [$("#questionOne").val(), $("#questionTwo").val(), $("#questionThree").val(),],
+
       	};
 
-      // Question: What does this code do??
+      // POST newFriend
       $.post("/api/friends", newFriend)
       .done(function(data) {
         console.log(data);
         alert("Adding new friend");
       });
     });
-
 
   </script>
 

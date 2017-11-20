@@ -56,7 +56,7 @@ var friends = [
 		]
 	}
 
-]//end of ninjas array
+];//end of friends array
 
 
 // Question set
@@ -113,34 +113,79 @@ app.get("/api/friends", function(req, res) {
 
 app.post("/api/friends", function(req, res) {
 
-var newfriend = req.body;
-  newfriend.routeName = newfriend.name.replace(/\s+/g, "").toLowerCase();
+var newFriend = req.body;
+  // newFriend.routeName = newFriend.name.replace(/\s+/g, "").toLowerCase();
+  // console.log(newFriend);
 
-  console.log(newfriend);
+  friends.push(newFriend);
+  res.json(newFriend);
 
-  friends.push(newfriend);
+  //FIND MATCH
 
-  res.json(newfriend);
+	  //loop through friends array
+	  for (var i = 0; i < friends.length; i++){
+	  	// console.log("friends:" + JSON.stringify(friends[i]));
+
+	  		//calculate difference of each answer
+	  		var difference = 0;
+	  		var totalDifference = 4545;
+	  		var matchName = "";
+			var matchPhoto = "";
+			var friendsScores = friends.scores;
+			
+				// console.log("friendScore: " + friendsScore);
+				// console.log("newfriendScore: " + newfriendScore);
+
+	  		for(var f = 0; f < [newFriend].length; f++) {
+	  			var newfriendScores = newFriend[f].scores;
+	  			difference += Math.abs(parseInt(friendsScores[i]) - parseInt(newfriendScores[f]));
+	  		} //end: for loop newFriend.length
+	  		console.log("difference: "+ difference);
+	  		console.log("newfriendScores: "+newFriend[f].scores);
+
+			lowest difference = match
+			if (difference < totalDifference){
+				matchName = friends[i].name;
+				matchPhoto = friends[i].photo;
+
+				console.log(
+					"match name: " + friends[i].name +
+					"match photo: " + friends[i].photo
+				);
+			}//end: for loop friend
+			
+			console.log(friends[i].name + ": " + friends[i].scores);
+	  } //end: for loop for friends.length
+	  
+
 
   });
 
 
-//JQuery submit new friend to array
-    // $(".submit").on("click", function(event) {
-    //   event.preventDefault();
-    //   var newFriend = {
-    //     name: $("#name").val().trim(),
-    //     photo: $("#photo").val().trim(),
-    //   };
+	// $(".submit").on("click", function(event) {
+	// 	event.preventDefault();
 
-    //   // Question: What does this code do??
-    //   $.post("/api/friends", newFriend)
-    //   .done(function(data) {
-    //     console.log(data);
-    //     alert("Adding new friend");
-    //   });
-    // });
+	// 	var scoresArr = [];
+		
+	// 	scoresArr.push($("#questionOne").val().trim());
+	// 	scoresArr.push($("#questionTwo").val().trim()); 
+	// 	scoresArr.push($("#questionThree").val().trim());
 
+	// 	console.log(scoresArr);
+
+	// 	newFriend = {
+	//     	"name": $("#name").val().trim(),
+	//     	"photo": $("#photo").val().trim(),
+	//     	"scores": scoresArr
+	//   	};
+
+	//   // Question: What does this code do??
+	//   $.post("/api/friends", newFriend)
+	//   .done(function(data) {
+	//     console.log(data);
+	//     alert("Adding new friend");
+	//   });
+	// });
 //loop through each objects answer array and find difference of each index position
 
 //total difference of each friend
