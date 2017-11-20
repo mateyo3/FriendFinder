@@ -131,17 +131,17 @@ var newFriend = req.body;
 	  		var totalDifference = 4545;
 	  		var matchName = "";
 			var matchPhoto = "";
-			var friendsScores = friends.scores;
+			// var friendsScores = friends.scores;
 			
-				// console.log("friendScore: " + friendsScore);
+				// console.log("friendScore: " + friendsScores);
 				// console.log("newfriendScore: " + newfriendScore);
 
-	  // 		for(var f = 0; f < [newFriend].length; f++) {
-	  // 			var newfriendScores = newFriend[f].scores;
-	  // 			difference += Math.abs(parseInt(friendsScores[i]) - parseInt(newfriendScores[f]));
-	  // 		} //end: for loop newFriend.length
-	  // 		console.log("difference: "+ difference);
-	  // 		console.log("newfriendScores: "+newFriend[f].scores);
+	  		for(var f = 0; f < newFriend.length; f++) {
+	  			// var newfriendScores = newFriend[f].scores;
+	  			difference += Math.abs(parseInt(friends[i].scores[i]) - parseInt(newfriend[f].scores[f]));
+	  		} //end: for loop newFriend.length
+	  		console.log("difference: "+ difference);
+	  		console.log("newfriendScores: " + newFriend[f].scores);
 
 			// // lowest difference = match
 			// // if (difference < totalDifference){
@@ -154,47 +154,29 @@ var newFriend = req.body;
 			// // 	);
 
 
-			// }//end: for loop friend
+		}//end: for loop friend
 			
 			// console.log(friends[i].name + ": " + friends[i].scores);
-	  } //end: for loop for friends.length
+	  // } //end: for loop for friends.length
 	  
+	  //DISAPLAY IN MODAL
+	  var url = window.location.origin;
 
+	  //AJAX post
+	  $.post(url + "/api/friend", newData, function(data){
+
+		//disaply match of name and photo in modal
+		$("#match-name").text(data.name);
+		$("#match-photo").attr("src", data.photo);
+
+		$("#show-modal").modal('toggle');
+
+	  });
+
+	  
 
   });
 
-
-	// $(".submit").on("click", function(event) {
-	// 	event.preventDefault();
-
-	// 	var scoresArr = [];
-		
-	// 	scoresArr.push($("#questionOne").val().trim());
-	// 	scoresArr.push($("#questionTwo").val().trim()); 
-	// 	scoresArr.push($("#questionThree").val().trim());
-
-	// 	console.log(scoresArr);
-
-	// 	newFriend = {
-	//     	"name": $("#name").val().trim(),
-	//     	"photo": $("#photo").val().trim(),
-	//     	"scores": scoresArr
-	//   	};
-
-	//   // Question: What does this code do??
-	//   $.post("/api/friends", newFriend)
-	//   .done(function(data) {
-	//     console.log(data);
-	//     alert("Adding new friend");
-	//   });
-	// });
-//loop through each objects answer array and find difference of each index position
-
-//total difference of each friend
-
-//choose lowest difference
-
-//display result in modal pop-up (name and picture)
 
 
 
