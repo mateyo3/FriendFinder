@@ -2,6 +2,9 @@
 
 This full-stack site will take in results from users' surveys, then compare their answers with those from other users. The app will then display the name and picture of the user with the best overall match.
 
+## Deployed Heroku link
+https://protected-caverns-19224.herokuapp.com/home
+
 ## Functionality
 Type name, insert a URL to a photo, and answer three questions using drop down menus
 
