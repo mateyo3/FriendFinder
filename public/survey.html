@@ -45,11 +45,15 @@
 	</div>
 
 	<div class="question">
-		<label class="radio-inline"><input class="questionOne" type="radio" name="optradio" value="1">1 (strongly agree)</label>
-		<label class="radio-inline"><input class="questionOne" type="radio" name="optradio" value="2">2</label>
-		<label class="radio-inline"><input class="questionOne" type="radio" name="optradio" value="3">3</label>
-		<label class="radio-inline"><input class="questionOne" type="radio" name="optradio" value="4">4</label>
-		<label class="radio-inline"><input class="questionOne" type="radio" name="optradio" value="5">5 (strongly disagree)</label>
+		<form>
+			<select name="questionOne" id="questionOne">
+				<option value="1">1 (strongly agree)</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5 (strongly disagree)</option>
+			</select>
+		</form>
 	</div>
 
 	<!-- QUESTION 2 -->
@@ -62,11 +66,15 @@
 	</div>
 
 	<div class="question">
-		<label class="radio-inline"><input class="questionTwo" type="radio" name="optradio" value="1">1 (strongly agree)</label>
-		<label class="radio-inline"><input class="questionTwo" type="radio" name="optradio" value="2">2</label>
-		<label class="radio-inline"><input class="questionTwo" type="radio" name="optradio" value="3">3</label>
-		<label class="radio-inline"><input class="questionTwo" type="radio" name="optradio" value="4">4</label>
-		<label class="radio-inline"><input class="questionTwo" type="radio" name="optradio" value="5">5 (strongly disagree)</label>
+		<form>
+			<select name="questionTwo" id="questionTwo">
+				<option value="1">1 (strongly agree)</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5 (strongly disagree)</option>
+			</select>
+		</form>
 	</div>
 
 	<!-- QUESTION 3 -->
@@ -79,11 +87,15 @@
 	</div>
 	
 	<div class="question">
-		<label class="radio-inline"><input class="questionThree" type="radio" name="optradio" value="1">1 (strongly agree)</label>
-		<label class="radio-inline"><input class="questionThree" type="radio" name="optradio" value="2">2</label>
-		<label class="radio-inline"><input class="questionThree" type="radio" name="optradio" value="3">3</label>
-		<label class="radio-inline"><input class="questionThree" type="radio" name="optradio" value="4">4</label>
-		<label class="radio-inline"><input class="questionThree" type="radio" name="optradio" value="5">5 (strongly disagree)</label>
+		<form>
+			<select name="questionThree" id="questionThree">
+				<option value="1">1 (strongly agree)</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5 (strongly disagree)</option>
+			</select>
+		</form>
 	</div>
 
 	<div>
@@ -98,13 +110,23 @@
 <!-- class = "container-fluid" -->
 
   <script type="text/javascript">
-    // Question: What does this code do?
+
     $(".submit").on("click", function(event) {
-      event.preventDefault();
-      var newFriend = {
-        name: $("#name").val().trim(),
-        photo: $("#photo").val().trim(),
-      };
+		event.preventDefault();
+
+		let scoresArr = [];
+		
+		scoresArr.push($("#questionOne").val().trim());
+		scoresArr.push($("#questionTwo").val().trim()); 
+		scoresArr.push($("#questionThree").val().trim());
+	
+		console.log(scoresArr);
+
+		var newFriend = {
+        	"name": $("#name").val().trim(),
+        	"photo": $("#photo").val().trim(),
+        	"scores": scoresArr
+      	};
 
       // Question: What does this code do??
       $.post("/api/friends", newFriend)
