@@ -133,21 +133,18 @@
   </div>
 
   <script type="text/javascript">
+ 
+	if (typeof jQuery !== 'undefined') {
+		jQuery.ajaxSettings.traditional = true;
+	}
 
     $(".submit").on("click", function(event) {
 		event.preventDefault();
 
-		// these variables were created in an attempt to work around the object property name problem
-		var scoresQ1 = $("#questionOne").val();
-		var scoresQ2 = $("#questionTwo").val();
-		var scoresQ3 = $("#questionThree").val();
-
 		newFriend = {
-        	"name": $("#name").val().trim(),
-        	"photo": $("#photo").val().trim(),
-        	"scores": [scoresQ1, scoresQ2, scoresQ3]
-
-        	// scores: [$("#questionOne").val(), $("#questionTwo").val(), $("#questionThree").val(),],
+        	name: $("#name").val().trim(),
+        	photo: $("#photo").val().trim(),
+        	scores: [$("#questionOne").val(), $("#questionTwo").val(), $("#questionThree").val(),],
 
       	};
 

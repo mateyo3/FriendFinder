@@ -136,25 +136,27 @@ var newFriend = req.body;
 				// console.log("friendScore: " + friendsScore);
 				// console.log("newfriendScore: " + newfriendScore);
 
-	  		for(var f = 0; f < [newFriend].length; f++) {
-	  			var newfriendScores = newFriend[f].scores;
-	  			difference += Math.abs(parseInt(friendsScores[i]) - parseInt(newfriendScores[f]));
-	  		} //end: for loop newFriend.length
-	  		console.log("difference: "+ difference);
-	  		console.log("newfriendScores: "+newFriend[f].scores);
+	  // 		for(var f = 0; f < [newFriend].length; f++) {
+	  // 			var newfriendScores = newFriend[f].scores;
+	  // 			difference += Math.abs(parseInt(friendsScores[i]) - parseInt(newfriendScores[f]));
+	  // 		} //end: for loop newFriend.length
+	  // 		console.log("difference: "+ difference);
+	  // 		console.log("newfriendScores: "+newFriend[f].scores);
 
-			lowest difference = match
-			if (difference < totalDifference){
-				matchName = friends[i].name;
-				matchPhoto = friends[i].photo;
+			// // lowest difference = match
+			// // if (difference < totalDifference){
+			// // 	matchName = friends[i].name;
+			// // 	matchPhoto = friends[i].photo;
 
-				console.log(
-					"match name: " + friends[i].name +
-					"match photo: " + friends[i].photo
-				);
-			}//end: for loop friend
+			// // 	console.log(
+			// // 		"match name: " + friends[i].name +
+			// // 		"match photo: " + friends[i].photo
+			// // 	);
+
+
+			// }//end: for loop friend
 			
-			console.log(friends[i].name + ": " + friends[i].scores);
+			// console.log(friends[i].name + ": " + friends[i].scores);
 	  } //end: for loop for friends.length
 	  
 
